@@ -3,162 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja de Produtos</title>
+    <title>Pergunta</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
         }
-        .menu, .produtos, .carrinho, .compras-passadas, .login, .cadastro, .metodo-pagamento {
-            display: none;
+        .button-container {
+            margin-top: 20px;
         }
-        .active {
-            display: block;
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <h1>Loja de Produtos</h1>
-    <div id="menu" class="menu active">
-        <h2>Menu</h2>
-        <button onclick="visualizarProdutos()">Visualizar Produtos</button>
-        <button onclick="acessarPaginaProduto()">Acessar Página do Produto</button>
-        <button onclick="alterarQuantidade()">Alterar Quantidade</button>
-        <button onclick="consultarCarrinho()">Consultar Carrinho</button>
-        <button onclick="consultarComprasPassadas()">Consultar Compras Passadas</button>
-        <button onclick="menuLogin()">Login/Cadastro</button>
-        <button onclick="sair()">Sair</button>
-    </div>
-
-    <div id="produtos" class="produtos">
-        <h2>Produtos Disponíveis</h2>
-        <ul id="lista-produtos"></ul>
-        <button onclick="voltar()">Voltar</button>
-    </div>
-
-    <div id="carrinho" class="carrinho">
-        <h2>Carrinho de Compras</h2>
-        <ul id="lista-carrinho"></ul>
-        <button onclick="confirmarCompra()">Confirmar Compra</button>
-        <button onclick="voltar()">Voltar</button>
-    </div>
-
-    <div id="compras-passadas" class="compras-passadas">
-        <h2>Compras Passadas</h2>
-        <ul id="lista-compras-passadas"></ul>
-        <button onclick="voltar()">Voltar</button>
-    </div>
-
-    <div id="login" class="login">
-        <h2>Login</h2>
-        <input type="email" id="login-email" placeholder="Email">
-        <input type="password" id="login-senha" placeholder="Senha">
-        <button onclick="fazerLogin()">Login</button>
-        <button onclick="menuLogin()">Voltar</button>
-    </div>
-
-    <div id="cadastro" class="cadastro">
-        <h2>Cadastro</h2>
-        <input type="text" id="cadastro-nome" placeholder="Nome">
-        <input type="email" id="cadastro-email" placeholder="Email">
-        <input type="password" id="cadastro-senha" placeholder="Senha">
-        <button onclick="fazerCadastro()">Cadastrar</button>
-        <button onclick="menuLogin()">Voltar</button>
+    <h1>Você é loiro?</h1>
+    <div class="button-container">
+        <button onclick="responder('Sim')">Sim</button>
+        <button onclick="responder('Não')">Não</button>
     </div>
 
     <script>
-        let produtos = [
-            { id: 1, nome: 'Maçã', preco: 1.50, estoque: 10 },
-            { id: 2, nome: 'Banana', preco: 0.75, estoque: 20 },
-            { id: 3, nome: 'Laranja', preco: 1.20, estoque: 15 },
-            { id: 4, nome: 'Pera', preco: 1.80, estoque: 8 }
-        ];
-
-        let carrinho = [];
-        let comprasPassadas = [];
-        let usuarioLogado = null;
-        let tipoUsuario = null;
-
-        function visualizarProdutos() {
-            document.getElementById('menu').classList.remove('active');
-            document.getElementById('produtos').classList.add('active');
-            let listaProdutos = document.getElementById('lista-produtos');
-            listaProdutos.innerHTML = '';
-            produtos.forEach(produto => {
-                let li = document.createElement('li');
-                li.textContent = `ID: ${produto.id}, Nome: ${produto.nome}, Preço: R$${produto.preco.toFixed(2)}, Estoque: ${produto.estoque} unidades`;
-                listaProdutos.appendChild(li);
-            });
-        }
-
-        function acessarPaginaProduto() {
-            // Lógica para acessar página do produto
-            alert('Função não implementada nesta versão.');
-        }
-
-        function alterarQuantidade() {
-            // Lógica para alterar quantidade no carrinho
-            alert('Função não implementada nesta versão.');
-        }
-
-        function consultarCarrinho() {
-            document.getElementById('menu').classList.remove('active');
-            document.getElementById('carrinho').classList.add('active');
-            let listaCarrinho = document.getElementById('lista-carrinho');
-            listaCarrinho.innerHTML = '';
-            if (carrinho.length === 0) {
-                listaCarrinho.textContent = 'Seu carrinho está vazio.';
-            } else {
-                carrinho.forEach(item => {
-                    let li = document.createElement('li');
-                    li.textContent = `${item.produto.nome} - ${item.quantidade} unidades - R$${(item.produto.preco * item.quantidade).toFixed(2)}`;
-                    listaCarrinho.appendChild(li);
-                });
-            }
-        }
-
-        function confirmarCompra() {
-            // Lógica para confirmar compra
-            alert('Função não implementada nesta versão.');
-        }
-
-        function consultarComprasPassadas() {
-            document.getElementById('menu').classList.remove('active');
-            document.getElementById('compras-passadas').classList.add('active');
-            let listaComprasPassadas = document.getElementById('lista-compras-passadas');
-            listaComprasPassadas.innerHTML = '';
-            if (comprasPassadas.length === 0) {
-                listaComprasPassadas.textContent = 'Não há compras passadas.';
-            } else {
-                comprasPassadas.forEach(compra => {
-                    let li = document.createElement('li');
-                    li.textContent = `Pedido ${compra.numeroPedido} - Data: ${compra.data}`;
-                    listaComprasPassadas.appendChild(li);
-                });
-            }
-        }
-
-        function menuLogin() {
-            document.getElementById('menu').classList.remove('active');
-            document.getElementById('login').classList.add('active');
-        }
-
-        function fazerLogin() {
-            // Lógica para fazer login
-            alert('Função não implementada nesta versão.');
-        }
-
-        function fazerCadastro() {
-            // Lógica para fazer cadastro
-            alert('Função não implementada nesta versão.');
-        }
-
-        function voltar() {
-            document.querySelector('.active').classList.remove('active');
-            document.getElementById('menu').classList.add('active');
-        }
-
-        function sair() {
-            alert('Saindo do programa...');
+        function responder(resposta) {
+            alert('Você respondeu: ' + resposta);
         }
     </script>
 </body>
