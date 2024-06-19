@@ -10,17 +10,34 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
         }
         .container {
             text-align: center;
+            background-color: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
         }
         .button {
             margin: 10px;
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            background-color: #ff6347;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #ff4500;
         }
         .moving-button {
             position: absolute;
@@ -29,7 +46,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Você é loiro?</h1>
+        <h1>Você é Gay?</h1>
         <button class="button" onclick="alert('Você clicou em Sim!')">Sim</button>
         <button class="button moving-button" id="naoBtn">Não</button>
     </div>
