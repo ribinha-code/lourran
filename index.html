@@ -3,35 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pergunta</title>
+    <title>Você é loiro?</title>
     <style>
         body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
             text-align: center;
-            margin-top: 50px;
         }
-        .button-container {
-            margin-top: 20px;
-        }
-        button {
+        .button {
+            margin: 10px;
             padding: 10px 20px;
             font-size: 16px;
-            margin: 10px;
             cursor: pointer;
+        }
+        .moving-button {
+            position: absolute;
         }
     </style>
 </head>
 <body>
-    <h1>Você é loiro?</h1>
-    <div class="button-container">
-        <button onclick="responder('Sim')">Sim</button>
-        <button onclick="responder('Não')">Não</button>
+    <div class="container">
+        <h1>Você é loiro?</h1>
+        <button class="button" onclick="alert('Você clicou em Sim!')">Sim</button>
+        <button class="button moving-button" id="naoBtn">Não</button>
     </div>
 
     <script>
-        function responder(resposta) {
-            alert('Você respondeu: ' + resposta);
-        }
+        const naoBtn = document.getElementById('naoBtn');
+
+        naoBtn.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - naoBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - naoBtn.offsetHeight);
+            naoBtn.style.left = `${x}px`;
+            naoBtn.style.top = `${y}px`;
+        });
     </script>
 </body>
 </html>
